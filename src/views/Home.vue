@@ -1,6 +1,6 @@
 <template lang="pug">
   .home
-    img(alt="Vue logo" src="../assets/logo.png")
+    img(alt="Vue logo" src="@/assets/logo.png")
     HelloWorld(msg="Welcome to Your Vue.js App")
     Button(text="發送" @click="showModal = true")
     Modal(title="發送確認" sureText="確定" btnType="3" :showModal="showModal" @submit="send" @cancel="showModal = false")
@@ -22,14 +22,14 @@ export default {
   },
   data() {
     return {
-      showModal: true
+      showModal: false
     };
   },
   methods: {
-    send: function(){
-      alert('已發送');
+    send: function() {
       this.showModal = false;
+      this.$router.push("about");
     }
-  },
+  }
 };
 </script>

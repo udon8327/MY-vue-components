@@ -4,7 +4,7 @@
       template(slot="body")
         p 彈窗內容
     h1 This is an about page
-    Modal(title="發送確認" sureText="確定" btnType="1" :showModal="showModal" @submit="send" @cancel="showModal = false")
+    Modal(title="發送確認" sureText="確定" btnType="1" :showModal="showModal" @cancel="showModal = false")
       template(slot="body")
         p 確定要送出嗎?
 </template>
@@ -19,8 +19,8 @@ export default {
   },
   data() {
     return {
-      showModal: true
-    }
-  },
+      showModal: false
+    };
+  }
 };
 </script>

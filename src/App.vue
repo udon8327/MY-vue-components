@@ -6,7 +6,8 @@
           router-link(to="/") Home
           |  | 
           router-link(to="/about") About
-        router-view
+        transition(name="fade" appear mode="out-in")
+          router-view
 </template>
 
 <style lang="sass">
@@ -28,15 +29,21 @@ html,body
 .container
   max-width: 540px
   margin: 0 auto
-  background-color: #ccc
   min-height: 100%
   padding: 15px
+  background-color: #fff
   .wrapper
-    background-color: #fff
     padding: 15px 10% 60px 10%
 
 a
   text-decoration: none !important
+
+.fade-leave-to
+  opacity: 0
+.fade-enter
+  opacity: 0
+.fade-enter-active,.fade-leave-active
+  transition: all 0.2s ease
 
 #nav
   padding: 30px

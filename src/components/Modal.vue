@@ -7,7 +7,8 @@
           span {{title}}
           a.icon-close(href="javascript:;" @click="$emit('cancel')") ╳
         .modal-body
-          slot(name="body")
+          slot(name="body") 
+            p 彈窗訊息
         .modal-footer
           a.btn(href="javascript:;" v-if="btnType == 1" @click="$emit('submit')") {{sureText}}
           a.btn(href="javascript:;" v-if="btnType == 2" @click="$emit('cancel')") {{cancelText}}
@@ -20,11 +21,11 @@
 export default {
   name: "Modal",
   props: {
-    // 弹框标题
+    // 彈框標題
     title: String,
-    // 按钮类型： 1：确定按钮 2：取消按钮 3：确定取消
+    // 按鈕類型： 1：確定 2：取消 3：確定取消
     btnType: String,
-    // 按钮文本
+    // 按鈕文本
     sureText: {
       type: String,
       default: "確定"
