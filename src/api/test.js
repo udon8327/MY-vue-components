@@ -4,15 +4,15 @@ export function login(data) {
   return request({
     url: "/@Components/frontend/echo.php",
     method: "post",
-    data
+    data: data
   });
 }
 
-export function getInfo(question) {
+export function getInfo(uid) {
   return request({
     url: "/@Components/frontend/success.php",
     method: "get",
-    params: { question }
+    params: { uid: uid }
   });
 }
 

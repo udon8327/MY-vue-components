@@ -2,9 +2,10 @@
   .home
     img(alt="Vue logo" src="@/assets/logo.png")
     HelloWorld(msg="Welcome to Your Vue.js App!")
+    h1 {{title}}
     h3 {{mode}}
     Button(text="發送" @click="showModal = true")
-    Modal(title="發送確認" sureText="確定" btnType="3" :showModal="showModal" @submit="send" @cancel="showModal = false")
+    Modal(:title="title" sureText="確定" btnType="3" :showModal="showModal" @submit="send" @cancel="showModal = false")
       template(slot="body")
         p 確定要送出嗎?
 </template>
@@ -25,15 +26,21 @@ export default {
   data() {
     return {
       showModal: false,
-      mode: `目前為${process.env.NODE_ENV}模式`
+      mode: `目前為${process.env.NODE_ENV}模式`,
+      title: "警告"
     };
   },
   methods: {
     send: function() {
+      let _this = this;
       this.showModal = false;
       // this.$router.push("about");
-      login(this.mode);
-      getInfo("id=123");
+      login(this.mode).then(res => {
+        _this.mode = `${res}哈哈哈`;
+      });
+      getInfo(123).then(res => {
+        _this.title = res.title;
+      });
     }
   }
 };

@@ -1,18 +1,17 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  timeout: 5000
-  // withCredentials: true, // send cookies when cross-domain requests
+  baseURL: process.env.VUE_APP_BASE_API, // url = baseURL + request url
+  timeout: 5000,
+  // Content-Type值: application/x-www-form-urlencoded, multipart/form-data, application/json, text/xml
+  headers: { "Content-Type": "multipart/form-data" }
+  // withCredentials: true, // 表示跨域請求時是否需要使用憑證 send cookies when cross-domain requests
 });
 
 service.interceptors.request.use(
   config => {
     //發請求前做的一些處理，數據轉化，配置請求頭，設置token，設置loading等
     config.data = JSON.stringify(config.data);
-    config.headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    };
     return config;
   },
   error => {
@@ -25,7 +24,6 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     console.log(response.data);
-    console.log(response.status);
     return response.data;
   },
   error => {
@@ -73,9 +71,9 @@ service.interceptors.response.use(
       }
     } else {
       if (JSON.stringify(error).includes("timeout")) {
-        alert("伺服器回應超時，請刷新當前面頁");
+        error.message = "伺服器回應超時，請刷新當前面頁";
       }
-      error.message("連接伺服器失敗");
+      error.message = "連接伺服器失敗";
     }
     alert(error.message);
     return Promise.resolve(error.response);
