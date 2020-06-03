@@ -4,7 +4,7 @@ const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = baseURL + request url
   timeout: 5000,
   // Content-Type值: application/x-www-form-urlencoded, multipart/form-data, application/json, text/xml
-  headers: { "Content-Type": "multipart/form-data" }
+  headers: { "Content-Type": "application/x-www-form-urlencoded" }
   // withCredentials: true, // 表示跨域請求時是否需要使用憑證 send cookies when cross-domain requests
 });
 
