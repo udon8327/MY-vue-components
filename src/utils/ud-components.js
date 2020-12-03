@@ -1,5 +1,3 @@
-import Vue from 'vue'
-
 import UdAlert from "@/components/UdAlert"
 import UdAlertCall from '@/components/UdAlertCall'
 import UdButton from "@/components/UdButton"
@@ -21,12 +19,6 @@ import UdSelectLink from "@/components/UdSelectLink"
 import UdSwitch from "@/components/UdSwitch"
 import UdTextarea from "@/components/UdTextarea"
 
-const UdAlertExtend = Vue.extend(UdAlertCall);
-const UdAlertFn = (options = {}) => {
-  const UdAlertInstance = new UdAlertExtend({ data: options }).$mount();
-  document.body.appendChild(UdAlertInstance.$el);
-};
-
 function plugins(Vue) {
   Vue.component("UdAlert", UdAlert)
   Vue.component("UdButton", UdButton)
@@ -47,6 +39,12 @@ function plugins(Vue) {
   Vue.component("UdSelectLink", UdSelectLink)
   Vue.component("UdSwitch", UdSwitch)
   Vue.component("UdTextarea", UdTextarea)
+
+  const UdAlertExtend = Vue.extend(UdAlertCall);
+  const UdAlertFn = (options = {}) => {
+    const UdAlertInstance = new UdAlertExtend({ data: options }).$mount();
+    document.body.appendChild(UdAlertInstance.$el);
+  };
   Vue.prototype.UdAlert = UdAlertFn;
 }
 
