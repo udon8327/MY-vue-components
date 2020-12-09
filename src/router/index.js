@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Agreement from '../views/Agreement.vue'
+import Userinfo from '../views/Userinfo.vue'
+import Failed from '../views/Failed.vue'
+import Submitted from '../views/Submitted.vue'
+import Success from '../views/Success.vue'
 
 Vue.use(VueRouter)
 
@@ -13,23 +17,29 @@ const routes = [
   {
     path: '/userinfo',
     name: 'Userinfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Userinfo.vue')
+    component: Userinfo
   },
   {
     path: '/failed',
     name: 'Failed',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Failed.vue')
+    component: Failed
   },
   {
     path: '/submitted',
     name: 'Submitted',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Submitted.vue')
+    component: Submitted
   },
   {
     path: '/success',
     name: 'Success',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Success.vue')
+    component: Success
   },
+  // 路由懶加載
+  // {
+  //   path: '/lazyload',
+  //   name: 'Lazyload',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Success.vue')
+  // },
   {
     path: '*',
     redirect: '/'

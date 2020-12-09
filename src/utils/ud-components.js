@@ -19,6 +19,7 @@ import UdSelectLink from "@/components/UdSelectLink"
 import UdSwitch from "@/components/UdSwitch"
 import UdTextarea from "@/components/UdTextarea"
 
+// 插件匯出
 function plugins(Vue) {
   Vue.component("UdAlert", UdAlert)
   Vue.component("UdButton", UdButton)
